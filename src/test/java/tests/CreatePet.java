@@ -27,7 +27,7 @@ public class CreatePet {
         CategoryRequest categoryRequest = new CategoryRequest();
         categoryRequest.setId(43245);
         categoryRequest.setName("Panda");
-        
+
 
         Response response = RestAssured
                 .given()
