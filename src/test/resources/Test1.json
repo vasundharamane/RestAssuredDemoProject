@@ -1,0 +1,23 @@
+{
+  "status": ["Sold", "reserved"],
+  "people": [
+    {
+      "name": "John Doe",
+      "age": 30,
+      "email": "johndoe@example.com",
+      "isEmployed": true
+    },
+    {
+      "name": "Jane Smith",
+      "age": 25,
+      "email": "janesmith@example.com",
+      "isEmployed": false
+    },
+    {
+      "name": "Bob Johnson",
+      "age": 40,
+      "email": "bobjohnson@example.com",
+      "isEmployed": true
+    }
+  ]
+}

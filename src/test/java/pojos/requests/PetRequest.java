@@ -5,7 +5,7 @@ import java.util.List;
 public class PetRequest {
 
     private long id;
-    private CategoryRequest categoryRequest;
+    private CategoryRequest category;
     private String name;
     private List<String> photoUrls;
     private List<TagsRequest> tags;
@@ -19,12 +19,12 @@ public class PetRequest {
         this.id = id;
     }
 
-    public CategoryRequest getCategoryRequest() {
-        return categoryRequest;
+    public CategoryRequest getCategory() {
+        return category;
     }
 
-    public void setCategoryRequest(CategoryRequest categoryRequest) {
-        this.categoryRequest = categoryRequest;
+    public void setCategory(CategoryRequest category) {
+        this.category = category;
     }
 
     public String getName() {

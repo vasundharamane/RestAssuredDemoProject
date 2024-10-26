@@ -1,0 +1,36 @@
+{
+  "school": {
+    "name": "Greenwood High",
+    "address": "1234 Elm St",
+    "students": [
+      {
+        "name": "John Doe",
+        "age": 16,
+        "subjects": [
+          {
+            "subjectName": "Math",
+            "grade": "A"
+          },
+          {
+            "subjectName": "Science",
+            "grade": "B+"
+          }
+        ]
+      },
+      {
+        "name": "Jane Smith",
+        "age": 15,
+        "subjects": [
+          {
+            "subjectName": "Math",
+            "grade": "A-"
+          },
+          {
+            "subjectName": "History",
+            "grade": "A"
+          }
+        ]
+      }
+    ]
+  }
+}
