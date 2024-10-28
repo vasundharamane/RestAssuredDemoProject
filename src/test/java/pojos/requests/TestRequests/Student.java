@@ -2,7 +2,7 @@ package pojos.requests.TestRequests;
 
 import java.util.List;
 
-public class Students {
+public class Student {
     private String name;
     private int age;
     private List<Subject> subjects;

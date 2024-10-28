@@ -73,26 +73,30 @@ public class TestReqRes {
     }
 
     @Test
-    public void createTest3json(){
-        Subject student1 =  new Subject();
+    public void createTest3json() {
+        Subject student1 = new Subject();
         student1.setSubjectName("Math");
         student1.setGrade("A");
 
-        Subject student2 =  new Subject();
+        Subject student2 = new Subject();
         student2.setSubjectName("Science");
         student2.setGrade("B+");
 
-        List<Subject> subjects =  new ArrayList<>();
+        List<Subject> subjects = new ArrayList<>();
         subjects.add(student1);
         subjects.add(student2);
 
-        Students students =  new Students();
-        students.setAge(16);
-        students.setName("John Doe");
 
-        students.setSubjects(subjects);
+        Student student = new Student();
+        student.setAge(16);
+        student.setName("John Doe");
 
-        School school =  new School();
+        student.setSubjects(subjects);
+
+        List<Student> students = new ArrayList<>();
+        students.add(student);
+
+        School school = new School();
         school.setName("Greenwood High");
         school.setAddress("1234 Elm St");
         school.setStudents(students);
@@ -106,8 +110,7 @@ public class TestReqRes {
                 .when().log().all()
                 .post("https://reqres.in/api/users");
 
-
-
+        System.out.println();
     }
 
 }

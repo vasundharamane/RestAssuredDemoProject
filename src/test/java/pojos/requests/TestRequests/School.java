@@ -1,10 +1,12 @@
 package pojos.requests.TestRequests;
 
+import java.util.List;
+
 public class School {
 
     private String name;
     private String address;
-    private Students students;
+    private List<Student> students;
 
 
     public String getName() {
@@ -23,11 +25,11 @@ public class School {
         this.address = address;
     }
 
-    public Students getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Students students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
