@@ -6,8 +6,6 @@ import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import javax.swing.text.Utilities;
-
 import static io.restassured.RestAssured.given;
 
 public class ScenarioCoded {
@@ -29,12 +27,14 @@ public class ScenarioCoded {
 
 
 //        boolean authenticated = response.jsonPath().getBoolean("authenticated");
-        boolean authenticated =(boolean) ResponseReader.retrieveData(response,"Boolean","authenticated");
+        boolean authenticated = (boolean) ResponseReader.retrieveData(response, "Boolean", "authenticated");
 
         System.out.println("first method " + authenticated);
 
-        
-        System.out.println(response.body().path("authenticated").toString());
+//        System.out.println(response.body().path("authenticated").toString());
+        boolean authenticated2 = (boolean) ResponseReader.retrieveData(response, "authenticated");
+
+        System.out.println("second method " + authenticated2);
 
         //assumed that we received bearer token from above step
         String bearerToken = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";

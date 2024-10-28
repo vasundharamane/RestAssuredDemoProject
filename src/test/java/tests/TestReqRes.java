@@ -2,15 +2,19 @@ package tests;
 
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import pojos.requests.SimpleJsonExample;
 import pojos.requests.TestRequests.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 public class TestReqRes {
 
+    //Pojo creation for Test1.json
     @Test
     public void createTest1Pojo() {
         People people1 = new People();
@@ -43,6 +47,7 @@ public class TestReqRes {
 
     }
 
+    //Pojo creation for Test2.json
     @Test
     public void createTest2Pojo() {
         People people1 = new People();
@@ -67,11 +72,9 @@ public class TestReqRes {
                 .body(peopleList)
                 .when()
                 .post("https://reqres.in/api/users");
-
-
-//        System.out.println(response.prettyPrint());
     }
 
+    //pojo creation for Test3.json
     @Test
     public void createTest3json() {
         Subject student1 = new Subject();
@@ -110,7 +113,22 @@ public class TestReqRes {
                 .when().log().all()
                 .post("https://reqres.in/api/users");
 
-        System.out.println();
     }
 
+    //schema validation
+    @Test
+    public void schemaValidationExample() {
+
+        SimpleJsonExample simpleJsonExample = new SimpleJsonExample();
+        simpleJsonExample.setJob("leader");
+        simpleJsonExample.setName("morpheus");
+        Response response = given()
+                .header("content-type", "application/json")
+                .body(simpleJsonExample)
+                .when()
+                .post("https://reqres.in/api/users");
+
+        response.then().body(matchesJsonSchema(new File("src/test/resources/schema/userResponse.json")));
+
+    }
 }
