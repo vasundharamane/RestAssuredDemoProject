@@ -39,5 +39,4 @@ public enum StatusCodes {
         this.message = message;
     }
 
-
 }
