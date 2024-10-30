@@ -1,13 +1,12 @@
 package tests;
 
-import Utility.JSONReader;
-import Utility.StatusCodes;
+import Utility.*;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import pojos.requests.SimpleJsonExample;
 
 import java.io.File;
@@ -30,7 +29,7 @@ public class ReqResTests {
                 .pathParam("userspath", "users")
                 .when()
                 .get("https://reqres.in/api/{userspath}")
-                .then().log().all()
+                .then()
                 .statusCode(StatusCodes.SUCCESS.statusCode)
                 .body("data", notNullValue())
                 .body("page", equalTo(2))
@@ -128,4 +127,43 @@ public class ReqResTests {
                 .expectHeader("Server", "cloudflare")
                 .build();
     }
+
+    @Test
+    public void wrapperClassUse() {
+
+        SoftAssertionUtil_WrapperClassEx softAssertionUtilWrapperClassEx = new SoftAssertionUtil_WrapperClassEx();
+
+        Response response = given()
+                .when()
+                .get("https://reqres.in/api/users?page=2");
+
+        System.out.println(response.prettyPrint());
+
+        softAssertionUtilWrapperClassEx.assertStatusCode(response, 200);
+        softAssertionUtilWrapperClassEx.assertAll();
+    }
+
+
+    @Test
+    public void singleToneInstance() {
+
+
+        Response response = given()
+                .when()
+                .get("https://reqres.in/api/users?page=2");
+
+        System.out.println(response.prettyPrint());
+
+        SingletoneExample.getInstance().assertStatusCode(response, 200);
+        SingletoneExample.getInstance().assertAll();
+
+    }
+
+
+    @Test(dataProvider = "testData", dataProviderClass = DataProviderClass.class)
+    public void testDataproviderEx(String name, int id) {
+        System.out.println("name:  " + name + " id:  " + id);
+    }
+
+
 }
