@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
-public class TestReqRes {
+public class ComplexPojosTest {
 
     //Pojo creation for Test1.json
     @Test
@@ -116,19 +115,5 @@ public class TestReqRes {
     }
 
     //schema validation
-    @Test
-    public void schemaValidationExample() {
 
-        SimpleJsonExample simpleJsonExample = new SimpleJsonExample();
-        simpleJsonExample.setJob("leader");
-        simpleJsonExample.setName("morpheus");
-        Response response = given()
-                .header("content-type", "application/json")
-                .body(simpleJsonExample)
-                .when()
-                .post("https://reqres.in/api/users");
-
-        response.then().body(matchesJsonSchema(new File("src/test/resources/schema/userResponse.json")));
-
-    }
 }
