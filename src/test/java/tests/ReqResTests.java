@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -119,7 +118,7 @@ public class ReqResTests {
                 .then().log().all()
                 .spec(responseSpec())
                 .extract().response();
-        
+
     }
 
     public ResponseSpecification responseSpec() {
